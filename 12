@@ -1,0 +1,69 @@
+#include <iostream>
+
+
+int lestnica(int x) {
+	if (61 <= x && x < 71) {
+		return x;
+	}
+	else if (71 <= x && x < 81) {
+		return x + 2;
+	}
+	else if (81 <= x && x < 91) {
+		return (2 * x + 5);
+	}
+	else if (91 <= x && x < 101) {
+		return 1 + x;
+	}
+	else {
+		return 3 * x;
+	}
+}
+
+
+int operato(int x) {
+	switch (61 <= x && x < 71){
+		case true: return x;
+		case false: 
+			switch (71 <= x && x < 81) {
+			case true: return x + 2;
+			case false:
+				switch (81 <= x && x < 91) {
+				case true: return x + 2;
+				case false:
+					switch (91 <= x && x < 101) {
+					case true: return x + 2;
+					case false:
+						switch (x < 61 or x >= 101) {
+						case true: return x + 2;
+						case false: break;
+
+						}
+					}
+				}
+			}
+	}
+}
+
+
+int main()
+{
+	using namespace::std;
+	int choice, x;
+	cout << "Vyberite variant resheniya zadaniya:" << endl << "1: S ispolzovaniyem lestnicy if-else-if." << endl << "2: S ispolzovaniem operatora switch" << endl;
+	cin >> choice;
+	cout << endl << "Vvedite x: ";
+	switch (choice)
+	{
+	case 1:
+		cin >> x;
+		cout << "x: " << lestnica(x);
+		break;
+	case 2:
+		cin >> x;
+		cout << "x: " << operato(x);
+		break;
+	default:
+		cout << "Takogo varianta net";
+		break;
+	}
+}
