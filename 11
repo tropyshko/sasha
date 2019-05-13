@@ -1,0 +1,53 @@
+#include <iostream>
+
+int first(int x) {
+	if (-1 < x && x < 1) {
+		return 0;
+	}
+	else if (x <= -1 or x >= 1) {
+		return x;
+	}
+}
+
+
+int second(int x, int y) {
+	if (x < -1 && y > 2){
+		return x * y;
+	}
+	else if (x < -1 && y <= 2) {
+		return 3 * y + x;
+	}
+	else if (x >= -1 && y <= 2) {
+		return 2 * x + y;
+	}
+	else {
+		return x;
+	}
+}
+
+
+int main()
+{
+	using namespace::std;
+	char number;
+	int x, y;
+	cout << "Vvedite zadanie(a ili b): ";
+	cin >> number;
+	cout << endl;
+	if (number == 'a'){
+		cout << "Vvedite znachenie x: ";
+		cin >> x;
+		cout << endl;
+		cout << first(x);
+	}
+	else if (number == 'b') {
+		cout << "Vvedite znacheniya x y:";
+		cin >> x >> y;
+		cout << endl;
+		cout << second(x, y);
+	}
+	else
+	{
+		cout << "Takogo zadaniya net";
+	}
+}
