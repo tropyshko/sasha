@@ -1,24 +1,38 @@
 #include <iostream>
 #include <string>
-#include <regex>
-#include <set>
-#include <cstdlib>
- 
-// ЁёЁё, папап, ввв, ёё, п, п, 
-// п,ЁёЁё, папаб ввб, ё  
- 
-void main() 
+#include <sstream>
+using namespace std;
+
+bool compare(const string& first, const string& rest)
 {
-    system("chcp 1251");
-    std::string s1, s2;
-    std::getline(std::getline(std::cin, s1), s2);
-    std::regex reg("[а-яА-ЯёЁ[:alpha:]]+(?=$|[^а-яА-ЯёЁ[:alpha:]])");
-    std::set<std::string> sst(std::sregex_token_iterator(s1.begin(), s1.end(), reg), std::sregex_token_iterator());
-    for (std::sregex_token_iterator ib(s2.begin(), s2.end(), reg), ie; ib != ie; ++ib)
-    {
-        if (sst.find(ib->str()) != sst.end())
-        {
-            std::cout << ib->str() << std::endl;
-        }
-    }
+	int sf = first.size();
+	int sr = rest.size();
+	bool flag;
+	for (int i = 0; i != sr; i++)
+	{
+		flag = false;
+		for (int j = 0; j != sf; j++)
+		{
+			if (first[j] == rest[i])
+				flag = true;
+		}
+		if (!flag)return false;
+
+	}
+	return true;
+}
+
+
+int main()
+{
+	string str, first, rest;
+	getline(cin, str);
+
+	stringstream ss(str);
+	ss >> first;
+	while (ss >> rest)
+		if (compare(first, rest)) cout << rest << endl;
+
+
+	return 0;
 }
