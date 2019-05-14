@@ -1,0 +1,40 @@
+#include <iostream>
+#define precision 1e-18 // точность сравнения
+
+using namespace std;
+
+
+int main()
+{
+	int n = 0;
+	double x = 0;
+	double y = 0;
+	int d = 0;
+	cout << "Kolichestvo pryamyh: ";
+	cin >> n;
+	double* arr_1 = new double[n];
+	double* arr_2 = new double[n];
+	for (int i = 1; i <= n; i++)
+	{
+		cout << "Vvedite koefcient K pryamoy [" << i << "]: ";
+		cin >> arr_1[i];	
+		cout << "Vvedite koefcient b pryamoy [" << i << "]: ";
+		cin >> arr_2[i];
+	}
+	for (int i = 1; i < n; ++i)
+	{
+		for (int d = 1; d < n; ++d)
+			if (arr_1[i] != arr_1[d + 1]) {
+				x = (arr_2[i] - arr_2[d + 1]) / (arr_1[i] - arr_1[d + 1]);
+				y = arr_1[i] * x + arr_2[i];
+				cout << "tochka peresecheniy [" << i << "] и [" << d + 1 << "]: " << x << ";" << y << endl;
+				unsigned cc = 0;
+				while (n--) cc += (fabs(arr_1[n] -arr_2[n]) > precision);
+				cout << "Naibolshee kolichestvo peresecheniy imeet: " << cc;
+			}
+			else
+				cout << "pryamye [" << i << "] и [" << d + 1 << "]: parallelny" << endl;
+	}
+	delete[]arr_1;
+	delete[]arr_2;
+}
